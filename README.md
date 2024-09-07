@@ -1,5 +1,7 @@
 # 【株JSON】全銘柄JSONデータ
 
+[![badge](https://github.com/umihico/kabu-json-all-stock-list/actions/workflows/auto-update.yml/badge.svg)](https://github.com/umihico/kabu-json-all-stock-list/actions/workflows/auto-update.yml)
+
 ## 概要
 
 [その他統計資料 | 日本取引所グループ](https://www.jpx.co.jp/markets/statistics-equities/misc/01.html)に公開されている「東証上場銘柄一覧（20XX年Y月末）」というExcelファイルをダウンロード月次でパーズして、JSONで公開しています。
