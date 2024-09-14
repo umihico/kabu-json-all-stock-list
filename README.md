@@ -14,9 +14,6 @@
 
 ## 公開データ
 
-- [全銘柄JSONデータ](https://umihico.github.io/kabu-json-all-stock-list/all_stocks.json)
-- [新規上場銘柄JSONデータ](https://umihico.github.io/kabu-json-all-stock-list/new_listings.json)
-- [月次全銘柄JSONデータ](https://umihico.github.io/kabu-json-all-stock-list/monthly.json)
 
 ## 記事
 

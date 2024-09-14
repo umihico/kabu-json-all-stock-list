@@ -6,7 +6,7 @@ on:
   push: {}
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   auto-update:
@@ -24,10 +24,3 @@ jobs:
         run: python parse_jpx_new_stock_list.py
       - name: Merge symbols
         run: python merge_symbols.py
-      - name: Commit
-        run: |
-          git config user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add monthly.json new_listings.json all_stocks.json
-          git commit -m "Update json files $(date +'%Y-%m-%d')" || echo "No changes to commit"
-          git push || echo "No changes to commit"
