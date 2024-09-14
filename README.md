@@ -14,6 +14,9 @@
 
 ## 公開データ
 
+- [全銘柄JSONデータ](https://d1rrtoo3h22gy6.cloudfront.net/kabu-json-all-stock-list/v1/all_stocks.json)
+- [新規上場銘柄JSONデータ](https://d1rrtoo3h22gy6.cloudfront.net/kabu-json-all-stock-list/v1/new_listings.json)
+- [月次全銘柄JSONデータ](https://d1rrtoo3h22gy6.cloudfront.net/kabu-json-all-stock-list/v1/monthly.json)
 
 ## 記事
 

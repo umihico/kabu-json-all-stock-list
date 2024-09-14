@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 jobs:
   auto-update:
@@ -24,3 +25,15 @@ jobs:
         run: python parse_jpx_new_stock_list.py
       - name: Merge symbols
         run: python merge_symbols.py
+      - name: Configure AWS Credentials for GitHub Actions
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          mask-aws-account-id: true
+          aws-region: ap-northeast-1
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/kabu-json-github-actions-role
+          role-session-name: github-actions-${{ github.job }}-${{ github.run_id }}-${{ github.run_number }}
+      - name: Upload to S3
+        run: |
+          aws s3 cp all_stocks.json s3://kabu-json-public-static-data-bucket/kabu-json-all-stock-list/v1/all_stocks.json --content-type application/json
+          aws s3 cp new_listings.json s3://kabu-json-public-static-data-bucket/kabu-json-all-stock-list/v1/new_listings.json --content-type application/json
+          aws s3 cp monthly.json s3://kabu-json-public-static-data-bucket/kabu-json-all-stock-list/v1/monthly.json --content-type application/json
