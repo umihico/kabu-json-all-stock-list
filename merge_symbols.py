@@ -44,14 +44,14 @@ with open("new_listings.json", "r", encoding="utf-8") as json_file:
 merged_all_stocks = {}
 
 for stock in monthly:
-    merged_all_stocks[stock["コード"]] = {
-        "コード": stock["コード"],
+    merged_all_stocks[str(stock["コード"])] = {
+        "コード": str(stock["コード"]),
         "銘柄名": stock["銘柄名"],
     }
 
 for stock in new_listings:
-    merged_all_stocks[stock["コード"]] = {
-        "コード": stock["コード"],
+    merged_all_stocks[str(stock["コード"])] = {
+        "コード": str(stock["コード"]),
         "銘柄名": stock["会社名"],
     }
 
