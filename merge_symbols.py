@@ -55,6 +55,8 @@ for stock in new_listings:
         "銘柄名": stock["会社名"],
     }
 
+print(f"銘柄数: {len(merged_all_stocks)}")
+
 with open("all_stocks.json", "w", encoding="utf-8") as json_file:
     json_file.write(json.dumps(list(merged_all_stocks.values()),
                     ensure_ascii=False, indent=4))
