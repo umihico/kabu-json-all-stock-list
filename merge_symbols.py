@@ -44,6 +44,9 @@ with open("new_listings.json", "r", encoding="utf-8") as json_file:
 with open("kessan.json", "r", encoding="utf-8") as json_file:
     kessan_schedules = json.load(json_file)
 
+with open("new_etf_listings.json", "r", encoding="utf-8") as json_file:
+    new_etf_listings = json.load(json_file)
+
 merged_all_stocks = {}
 
 for stock in monthly:
@@ -62,6 +65,12 @@ for stock in kessan_schedules:
     merged_all_stocks[str(stock["証券コード"])] = {
         "コード": str(stock["証券コード"]),
         "銘柄名": stock["会社名"],
+    }
+
+for stock in new_etf_listings:
+    merged_all_stocks[str(stock["コード"])] = {
+        "コード": str(stock["コード"]),
+        "銘柄名": stock["銘柄名"],
     }
 
 print(f"銘柄数: {len(merged_all_stocks)}")
