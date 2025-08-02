@@ -29,5 +29,10 @@ for (i, row) in enumerate(rows):
             raise e
     new_stocks.append(new_stock)
 
+# 件数チェック（1割以上減少したらエラー）
+EXPECTED_MIN_COUNT = 300  # 333の90%
+if len(new_stocks) < EXPECTED_MIN_COUNT:
+    raise ValueError(f"ETFデータ件数が異常に少ないです。期待値: {EXPECTED_MIN_COUNT}件以上、実際: {len(new_stocks)}件")
+
 with open("new_etf_listings.json", "w", encoding="utf-8") as json_file:
     json_file.write(json.dumps(new_stocks, ensure_ascii=False, indent=4))

@@ -99,5 +99,11 @@ for (i, row) in enumerate(rows):
             raise e
     new_stocks.append(new_stock)
 
+# 件数チェック（1割以上減少したらエラー）
+# 新規上場は変動が大きいので、最低10件を基準とする
+EXPECTED_MIN_COUNT = 10
+if len(new_stocks) < EXPECTED_MIN_COUNT:
+    raise ValueError(f"新規上場データ件数が異常に少ないです。期待値: {EXPECTED_MIN_COUNT}件以上、実際: {len(new_stocks)}件")
+
 with open("new_listings.json", "w", encoding="utf-8") as json_file:
     json_file.write(json.dumps(new_stocks, ensure_ascii=False, indent=4))
