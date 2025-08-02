@@ -71,7 +71,7 @@ new_stocks = []
 functions = {
     "上場日": lambda row, next_row: row.xpath('.//td[1]/text()')[0].strip(),
     "上場承認日": lambda row, next_row: row.xpath('.//td[1]/text()')[1].strip().replace("（", "").replace("）", ""),
-    "会社名": lambda row, next_row: row.xpath('.//td[2]')[0].text_content().split("\r\n")[1].strip(),
+    "会社名": lambda row, next_row: row.xpath('.//td[2]//a/text()')[0].strip() if row.xpath('.//td[2]//a/text()') else row.xpath('.//td[2]/text()')[0].strip(),
     "コード": lambda row, next_row: row.xpath('.//td[3]')[0].text_content().strip(),
     "市場区分": lambda row, next_row: next_row.xpath('.//td[1]/text()')[0].strip(),
     "会社概要": lambda row, next_row: "https://www.jpx.co.jp" + row.xpath('.//td[4]/a/@href')[0].strip(),
