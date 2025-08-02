@@ -66,7 +66,7 @@ import json
 url = "https://www.jpx.co.jp/listing/stocks/new/index.html"
 response = requests.get(url)
 tree = html.fromstring(response.content)
-rows = tree.xpath("//table[@class='widetable']//tbody/tr")
+rows = tree.xpath("//table[contains(@class, 'widetable')]//tbody/tr")
 new_stocks = []
 functions = {
     "上場日": lambda row, next_row: row.xpath('.//td[1]/text()')[0].strip(),
