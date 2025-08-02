@@ -7,13 +7,13 @@ import json
 url = "https://www.jpx.co.jp/equities/products/etfs/issues/01.html"
 response = requests.get(url)
 tree = html.fromstring(response.content)
-rows = tree.xpath("//table[@class='widetable']//tr")[1:]
+rows = tree.xpath("//div[@class='component-normal-table']//tr")[1:]  # 最初の行はヘッダーなのでスキップ
 # print(response.content)
 print("len(rows)", len(rows))
 new_stocks = []
 functions = {
-    "銘柄名": lambda row: row.xpath('.//td[3]')[0].text_content().split("\r\n")[1].strip().split("(注")[0],
-    "コード": lambda row: row.xpath('.//td[2]')[0].text_content().strip(),
+    "銘柄名": lambda row: row.xpath('.//td[3]')[0].text_content().strip().split("\n")[0].strip(),
+    "コード": lambda row: row.xpath('.//td[2]/a/text()')[0].strip(),
 }
 for (i, row) in enumerate(rows):
     new_stock = {}
