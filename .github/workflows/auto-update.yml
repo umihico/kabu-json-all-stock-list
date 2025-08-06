@@ -28,6 +28,8 @@ jobs:
         run: python parse_kessan_list.py
       - name: Parse JPX new ETF list
         run: python parse_jpx_new_etf_list.py
+      - name: Parse SSE list
+        run: python parse_sse_list.py
       - name: Merge symbols
         run: python merge_symbols.py
       - name: Configure AWS Credentials for GitHub Actions
